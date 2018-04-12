@@ -40,17 +40,17 @@ class UrungBotCommands:
             for url in RTSP_URL:
                 logger.info('trying url : ' + url)
                 t = 0
-                out = 'do.jpg'
+                out = 'tele_do.jpg'
                 replyf = 'jpg'
                 cmdline = '/usr/bin/ffmpeg -y -rtsp_transport tcp -i ' + url + ' -vframes 1 ' + out
 
                 if args:
                     t = int(args[0])
                     if t >= 1 and t <= 10:
-                        out = 'do.gif'
+                        out = 'tele_do.gif'
                         replyf = 'gif'
                         cmdline = '/usr/bin/ffmpeg -y -rtsp_transport tcp -i ' + url + ' -t ' + str(
-                            t) + ' -vf fps=2,scale=iw/4:-1 ' + out
+                            t) + ' -vf fps=1,scale=iw/4:-1 ' + out
                     else:
                         reply_text = '지원 가능 범위 1 ~ 10'
                         logger.info('Reply Text : %s' % reply_text)
